@@ -27,12 +27,12 @@ theme:
     - navigation.top
     - content.code.copy
 
-# 빌드 속도 극대화 및 멍청한 링크 검사 차단
+# 빌드 속도 극대화 및 모든 검증/분석 기능 원천 차단
 use_directory_urls: false
 strict: false
 plugins: []
 
-# 모든 검증 기능을 강제로 끕니다.
+# MkDocs 9.5+ 버전에서 링크 검사를 완전히 끄는 유일한 방법
 validation:
   links:
     unrecognized_links: ignore
@@ -43,7 +43,7 @@ validation:
     not_found: ignore
     absolute_links: ignore
 
-# Markdown 해석 시 링크 자동 생성을 방지하기 위해 최소한의 확장만 사용
+# Markdown 확장 최소화 (링크 관련 기능 모두 제거)
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -52,3 +52,7 @@ markdown_extensions:
   - md_in_html
   - toc:
       permalink: true
+
+# 파일이 너무 많아 발생하는 인덱싱 부하를 줄이기 위해 수동 nav 설정 (임시)
+nav:
+  - Home: index.md
