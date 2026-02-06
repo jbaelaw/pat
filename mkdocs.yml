@@ -41,4 +41,6 @@ markdown_extensions:
   - toc:
       permalink: true
 
+strict: false
+
 # nav 설정이 없으면 docs 폴더의 모든 파일을 자동으로 인덱싱합니다.
