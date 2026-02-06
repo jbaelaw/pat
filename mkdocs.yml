@@ -6,26 +6,48 @@ site_author: baejiho
 theme:
   name: material
   language: ko
-
-# 빌드 속도 극대화를 위한 설정
-use_directory_urls: false
-strict: false
-plugins: []
-
-# 메뉴 생성을 수동으로 제한하여 빌드 부하 제거
-nav:
-  - Home: index.md
-  # 나머지 문서는 사이트가 정상 작동 확인 후 점진적으로 추가
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
 
 markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.magiclink
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - attr_list
   - md_in_html
+  - toc:
+      permalink: true
+
+# 빌드 안정성 설정
+use_directory_urls: false
+strict: false
+plugins: [] # 빌드 속도를 위해 플러그인은 일단 비활성 유지
 
 validation:
   links:
     unrecognized_links: ignore
   nav:
     omitted_files: ignore
+
+# nav 설정을 삭제하여 모든 문서를 자동으로 인덱싱합니다.
