@@ -25,8 +25,6 @@ theme:
     - navigation.tabs
     - navigation.sections
     - navigation.top
-    - search.suggest
-    - search.highlight
     - content.code.copy
 
 markdown_extensions:
@@ -41,10 +39,12 @@ markdown_extensions:
   - toc:
       permalink: true
 
+# 빌드 속도 최적화 및 에러 방지 설정
 strict: false
+plugins: [] # 검색 플러그인 등 모든 플러그인 비활성화하여 속도 극대화
 
 validation:
   links:
     unrecognized_links: ignore
-
-# nav 설정이 없으면 docs 폴더의 모든 파일을 자동으로 인덱싱합니다.
+  nav:
+    omitted_files: ignore
