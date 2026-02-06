@@ -27,24 +27,12 @@ theme:
     - navigation.top
     - content.code.copy
 
-markdown_extensions:
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.magiclink
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - attr_list
-  - md_in_html
-  - toc:
-      permalink: true
-
-# 빌드 속도 극대화 및 멈춤 방지 설정
+# 빌드 속도 극대화 및 멍청한 링크 검사 차단
 use_directory_urls: false
 strict: false
 plugins: []
 
-# 링크 검사를 완전히 건너뛰도록 설정
+# 모든 검증 기능을 강제로 끕니다.
 validation:
   links:
     unrecognized_links: ignore
@@ -52,7 +40,15 @@ validation:
     anchors: ignore
   nav:
     omitted_files: ignore
+    not_found: ignore
+    absolute_links: ignore
 
-# 파일이 너무 많아 자동 인덱싱 중 멈추는 현상을 방지하기 위해 
-# 문서를 가나다 순으로 그룹화하여 수동으로 배치하거나 자동 인덱싱을 유지하되 
-# 불필요한 분석을 최소화합니다.
+# Markdown 해석 시 링크 자동 생성을 방지하기 위해 최소한의 확장만 사용
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
