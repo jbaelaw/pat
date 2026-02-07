@@ -1,0 +1,30 @@
+{{ define "main" }}
+<nav>
+  <h1><a href="{{ .Site.BaseURL }}" style="color:#1a1a2e;text-decoration:none;">Pat</a></h1>
+  <input type="text" id="search" placeholder="문서 검색..." onkeyup="filterDocs()">
+  <ul id="docList">
+    {{ range .Site.RegularPages }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+</nav>
+<main>
+  <h1>{{ .Title }}</h1>
+  <p>총 {{ len .Site.RegularPages }}개의 문서가 있습니다.</p>
+  <ul>
+    {{ range .Site.RegularPages }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+</main>
+<script>
+function filterDocs() {
+  var input = document.getElementById('search').value.toLowerCase();
+  var items = document.getElementById('docList').getElementsByTagName('li');
+  for (var i = 0; i < items.length; i++) {
+    var text = items[i].textContent.toLowerCase();
+    items[i].style.display = text.includes(input) ? '' : 'none';
+  }
+}
+</script>
+{{ end }}

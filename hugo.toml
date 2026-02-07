@@ -1,0 +1,14 @@
+baseURL = "https://jbaelaw.github.io/pat/"
+languageCode = "ko"
+title = "Pat - 법률 및 판례 정리"
+contentDir = "docs"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.parser]
+      autoHeadingIDType = "github"
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
