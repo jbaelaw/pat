@@ -2,7 +2,19 @@
 <main style="margin-left:0; max-width:100%; padding:40px;">
   <h1>{{ .Title }}</h1>
   <p>총 {{ len .Site.RegularPages }}개의 문서가 있습니다.</p>
-  <input type="text" id="search" placeholder="문서 검색..." onkeyup="filterDocs()" style="width:100%;max-width:500px;padding:10px 14px;border:1px solid #ddd;border-radius:6px;margin:15px 0;font-size:15px;">
+
+  <h2 style="margin-top:30px;">본문 검색 (제목 + 내용)</h2>
+  <div id="search" style="margin:15px 0;"></div>
+  <link href="/pat/pagefind/pagefind-ui.css" rel="stylesheet">
+  <script src="/pat/pagefind/pagefind-ui.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      new PagefindUI({ element: "#search", showSubResults: true, showImages: false });
+    });
+  </script>
+
+  <h2 style="margin-top:40px;">전체 문서 목록</h2>
+  <input type="text" id="titleFilter" placeholder="제목으로 필터링..." onkeyup="filterDocs()" style="width:100%;max-width:500px;padding:10px 14px;border:1px solid #ddd;border-radius:6px;margin:15px 0;font-size:15px;">
   <ul id="docList" style="list-style:none;padding:0;">
     {{ range .Site.RegularPages }}
     <li style="margin:4px 0;"><a href="{{ .RelPermalink }}" style="text-decoration:none;color:#1a73e8;font-size:14px;">{{ with .Title }}{{ . }}{{ else }}{{ .File.ContentBaseName }}{{ end }}</a></li>
@@ -11,7 +23,7 @@
 </main>
 <script>
 function filterDocs() {
-  var input = document.getElementById('search').value.toLowerCase();
+  var input = document.getElementById('titleFilter').value.toLowerCase();
   var items = document.getElementById('docList').getElementsByTagName('li');
   for (var i = 0; i < items.length; i++) {
     var text = items[i].textContent.toLowerCase();
