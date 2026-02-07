@@ -4,12 +4,12 @@
   <input type="text" id="search" placeholder="문서 검색..." onkeyup="filterDocs()">
   <ul id="docList">
     {{ range .Site.RegularPages }}
-    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    <li><a href="{{ .RelPermalink }}">{{ with .Title }}{{ . }}{{ else }}{{ .File.ContentBaseName }}{{ end }}</a></li>
     {{ end }}
   </ul>
 </nav>
 <main>
-  <h1>{{ .Title }}</h1>
+  <h1>{{ with .Title }}{{ . }}{{ else }}{{ .File.ContentBaseName }}{{ end }}</h1>
   {{ .Content }}
 </main>
 <script>

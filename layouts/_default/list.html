@@ -1,19 +1,11 @@
 {{ define "main" }}
-<nav>
-  <h1><a href="{{ .Site.BaseURL }}" style="color:#1a1a2e;text-decoration:none;">Pat</a></h1>
-  <input type="text" id="search" placeholder="문서 검색..." onkeyup="filterDocs()">
-  <ul id="docList">
-    {{ range .Site.RegularPages }}
-    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-    {{ end }}
-  </ul>
-</nav>
-<main>
+<main style="margin-left:0; max-width:100%; padding:40px;">
   <h1>{{ .Title }}</h1>
   <p>총 {{ len .Site.RegularPages }}개의 문서가 있습니다.</p>
-  <ul>
+  <input type="text" id="search" placeholder="문서 검색..." onkeyup="filterDocs()" style="width:100%;max-width:500px;padding:10px 14px;border:1px solid #ddd;border-radius:6px;margin:15px 0;font-size:15px;">
+  <ul id="docList" style="list-style:none;padding:0;">
     {{ range .Site.RegularPages }}
-    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    <li style="margin:4px 0;"><a href="{{ .RelPermalink }}" style="text-decoration:none;color:#1a73e8;font-size:14px;">{{ with .Title }}{{ . }}{{ else }}{{ .File.ContentBaseName }}{{ end }}</a></li>
     {{ end }}
   </ul>
 </main>
