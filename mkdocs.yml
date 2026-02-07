@@ -30,7 +30,9 @@ theme:
 # 빌드 속도 및 안정성 설정
 use_directory_urls: false
 strict: false
-plugins: []
+plugins:
+  - search:
+      indexing: 'titles' # 내용 전체가 아닌 제목만 인덱싱하여 용량 최적화
 
 # 모든 검증 기능을 강제로 끕니다.
 validation:
