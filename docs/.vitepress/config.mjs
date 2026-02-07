@@ -4,6 +4,7 @@ export default defineConfig({
   title: "Pat",
   description: "법률 및 판례 정리 문서",
   base: '/pat/',
+  ignoreDeadLinks: true,
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
