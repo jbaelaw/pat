@@ -28,11 +28,12 @@ theme:
     - content.code.copy
 
 # 빌드 속도 및 안정성 설정
-use_directory_urls: false
+use_directory_urls: true # URL 구조 변경으로 빌드 부하 감소
 strict: false
 plugins:
-  - search:
-      indexing: 'titles' # 내용 전체가 아닌 제목만 인덱싱하여 용량 최적화
+  # 검색 기능을 아예 꺼서 디스크 용량 문제를 해결합니다.
+  # - search:
+  #     indexing: 'titles'
 
 # 모든 검증 기능을 강제로 끕니다.
 validation:
